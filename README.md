@@ -7,6 +7,8 @@
 Inventory App is a simple managing my own product application built with Ionic3, Node.js, Redis and MongoDB.
 
 
+![alt text](https://seoboseok.github.io/inventoryAppMovie.gif "demo")
+
 
 ## Features
 
