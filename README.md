@@ -27,6 +27,8 @@ Go into directory: `cd InventoryApp`
 
 Install dependency npm packages: `npm install`
 
+You have to add firebasecreditials.ts on 'src/app/firebasecreditials.ts' with your firebase config data
+
 Run: `ionic lab`
 
 
