@@ -23,7 +23,7 @@ Inventory App is a simple managing my own product application built with Ionic3,
 
 ## Installation
 
-Clone the repository with: `git clone https://github.com/SeoBoSeok/InventoryApp.git`
+Clone the repository with: `git clone SeoBoSeok.github.io/inventoryAppMovieReSize.gif`
 
 Go into directory: `cd InventoryApp`
 
