@@ -40,14 +40,22 @@
       <ion-col *ngFor="let item of inventroyList$ | async" detail-push navPush="EditInventoryItemPage" [navParams]="{item: item}">
         <ion-card>
           <ion-card-header class="ion-card-header">
-            {{ item.name }}
+            <!-- <button ion-button icon-left item-right small>
+              <ion-icon name="heart"></ion-icon>
+              <div>12</div>
+            </button> -->
+            <ion-icon name="heart" class="flex-right"> 12</ion-icon>
+            <h3>{{ item.name }}</h3>
           </ion-card-header>
           <ion-card-content class="ion-card-content">
-            수량: {{ item.quantity }}<br />
-            가격: {{ item.price }}
-            <ion-buttons end>
-              <ion-icon name="heart" color="danger"></ion-icon>
-            </ion-buttons>
+            <p>수량: {{ item.quantity }}</p>
+            <p>가격: {{ item.price }}</p>
+            <p>
+              <button ion-button icon-left small end>
+                <ion-icon name="time"></ion-icon>
+                <div>2 주전</div>
+              </button>
+            </p>
           </ion-card-content>
         </ion-card>
       </ion-col>
