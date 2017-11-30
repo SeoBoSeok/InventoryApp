@@ -42,6 +42,8 @@ Run: `ionic lab`
 
 Run on xcode:
 
+- Run ios emulator
+  - `ionic cordova run ios`
 - Build ios emulator
   - `ionic cordova build ios`
 
