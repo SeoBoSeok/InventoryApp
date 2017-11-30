@@ -10,6 +10,8 @@ import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './firebasecreditials'; //
 import { InventoryListService } from '../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../services/toast/toast.service';
+
+import { Facebook } from "@ionic-native/facebook";
 // import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ToastService } from '../services/toast/toast.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     InventoryListService,
-    ToastService
+    ToastService,
+    Facebook
   ]
 })
 export class AppModule {}

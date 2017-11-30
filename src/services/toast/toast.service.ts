@@ -12,4 +12,7 @@ export class ToastService {
         return this.toastCtrl.create({message,duration}).present();
     }
 
+    showAtCenter(message: string, duration: number = 3000, position = 'middle') {
+        return this.toastCtrl.create({ message, duration, position }).present();
+    }
 }
