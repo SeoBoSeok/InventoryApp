@@ -40,6 +40,11 @@ You have to add firebasecreditials.ts on 'src/app/firebasecreditials.ts' with yo
 
 Run: `ionic lab`
 
+Run on xcode:
+
+- Build ios emulator
+  - `ionic cordova build ios`
+
 
 
 ## Run
