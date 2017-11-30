@@ -1,5 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>
       Inventory App
     </ion-title>
@@ -22,11 +28,29 @@
       <p>First_Name: {{ userData.first_name }}</p>
     </ion-card-content>
   </ion-card>
-  <ion-list>
+  <!-- <ion-list>
     <ion-list-header>Inventorys</ion-list-header>
     <ion-item *ngFor="let item of inventroyList$ | async"
     detail-push navPush="EditInventoryItemPage" [navParams]="{item: item}">
       {{item.name}}
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col *ngFor="let item of inventroyList$ | async" detail-push navPush="EditInventoryItemPage" [navParams]="{item: item}">
+        <ion-card>
+          <ion-card-header class="ion-card-header">
+            {{ item.name }}
+          </ion-card-header>
+          <ion-card-content class="ion-card-content">
+            수량: {{ item.quantity }}<br />
+            가격: {{ item.price }}
+            <ion-buttons end>
+              <ion-icon name="heart" color="danger"></ion-icon>
+            </ion-buttons>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
