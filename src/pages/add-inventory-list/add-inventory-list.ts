@@ -20,7 +20,11 @@ export class AddInventoryListPage {
   item: Item = {
     name : '',
     quantity : undefined,
-    price: undefined
+    price: undefined,
+    desc: '',
+    history: '',
+    star: undefined,
+    date: new Date
   }
 
   constructor(
