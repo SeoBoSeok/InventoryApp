@@ -51,8 +51,7 @@
 
   <ion-item>
     <ion-label>Date</ion-label>
-    <ion-input [(ngModel)]="item.date" type="date"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="item.date"></ion-datetime>
   </ion-item>
 
   <!-- {{ item | json }} -->

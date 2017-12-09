@@ -22,10 +22,12 @@
 
 <ion-content padding>
   <ion-row>
-    {{item.name}} {{item.quantity}} {{item.price}}
-  </ion-row>
-  <ion-row>
-    {{item.desc}} {{item.star}}
+    <ion-col align-self-center>
+       {{item.name}} {{item.quantity}} {{item.price}}
+    </ion-col>
+    <ion-col align-self-center>
+      {{item.desc}} {{item.star}}
+    </ion-col>
   </ion-row>
   <ion-row>
     <div>리뷰 타임라인</div>
