@@ -31,6 +31,30 @@
     <!-- [(ngModel)]="" -->
   </ion-item>
 
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input [(ngModel)]="item.desc" type="textarea"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>History</ion-label>
+    <ion-input [(ngModel)]="item.history" type="text"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>star</ion-label>
+    <ion-input [(ngModel)]="item.star" type="number"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-input [(ngModel)]="item.date" type="date"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
   <!-- {{ item | json }} -->
 
   <button ion-button block clear (click)="addItem(item)">Add</button>

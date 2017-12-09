@@ -5,7 +5,7 @@ import { Item } from "../../models/item/item.model";
 import { Observable } from 'rxjs/Observable';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { ToastService } from '../../services/toast/toast.service';
-
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @IonicPage()
 @Component({
@@ -18,11 +18,13 @@ export class HomePage {
   inventroyList$: Observable<Item[]>;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     private inventory : InventoryListService,
     private facebook : Facebook,
-    private toast: ToastService
+    private toast: ToastService,
+    private splashScreen: SplashScreen
   ) {
+    this.splashScreen.show();
     this.toast.showAtCenter('Hi');
     this.inventroyList$ = this.inventory
     .getInventoryList() // DB List
