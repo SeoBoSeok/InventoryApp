@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database"; //
 
+// import { SideMenuContentComponent } from '../../shared/side-menu-content/side-menu-content.component';
+
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './firebasecreditials'; //
 import { InventoryListService } from '../services/Inventory-list/inventory-list.service';
