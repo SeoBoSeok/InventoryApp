@@ -31,7 +31,37 @@
     <!-- [(ngModel)]="" -->
   </ion-item>
 
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input [(ngModel)]="item.desc" type="textarea"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>History</ion-label>
+    <ion-input [(ngModel)]="item.history" type="text"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>star</ion-label>
+    <ion-input [(ngModel)]="item.star" type="number"></ion-input>
+    <!-- [(ngModel)]="" -->
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="item.date"></ion-datetime>
+  </ion-item>
+
   <!-- {{ item | json }} -->
 
   <button ion-button block clear (click)="addItem(item)">Add</button>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
