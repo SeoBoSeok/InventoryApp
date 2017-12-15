@@ -7,8 +7,8 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { ToastService } from '../../services/toast/toast.service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MenuOptionModel } from "../../../shared/side-menu-content/models/menu-option-model";
-import { SideMenuSettings } from "../../../shared/side-menu-content/models/side-menu-settings";
+// import { MenuOptionModel } from "../../../shared/side-menu-content/models/menu-option-model";
+// import { SideMenuSettings } from "../../../shared/side-menu-content/models/side-menu-settings";
 
 @IonicPage()
 @Component({
@@ -19,37 +19,7 @@ export class HomePage {
 
   userData = null;
   inventroyList$: Observable<Item[]>;
-  menuOption: MenuOptionModel = {
-    displayName: 'Option Name',
-    subItems: [
-      {
-        // With icon
-        iconName: 'ios-basket',
-        displayName: 'Sub Option 1'
-      },
-      {
-        // Without icon
-        displayName: 'Sub Option 2'
-      },
-      {
-        // Special option with icon
-        iconName: 'log-in',
-        displayName: 'Login',
-        custom: {
-          isLogin: true
-        }
-      },
-      {
-        // Another special option but without icon
-        displayName: 'Spanish',
-        custom: {
-          shouldChangeLanguage: true,
-          targetLanguage: 'ES'
-        }
-      }
-    ]
-  };
-
+  
   constructor(
     public navCtrl: NavController,
     private inventory : InventoryListService,
@@ -84,38 +54,4 @@ export class HomePage {
         this.toast.showAtCenter(`This FB login is only working on mobile environment`);
       })
   }
-
-  openModal() {
-    const myModalOptions: ModalOptions = {
-      enableBackdropDismiss : false
-    }
-    const myData = {
-      date: '20171215',
-      stars: '5'
-    };
-
-    const myModal = this.modal.create('ModalpagePage', {data: myData}, myModalOptions);
-
-    myModal.present();
-    myModal.onDidDismiss(data => {
-      console.log(data);
-    })
-  }
-
-  public selectOption(option: MenuOptionModel): void {
-    if (option.custom && option.custom.isLogin) {
-      // Handle the login...
-    } else if (option.custom && option.custom.isLogout) {
-      // Handle the logout...
-    } else if (option.component) {
-      // Push or set as root the option.component page
-    }
-  }
-
-  public sideMenuSettings: SideMenuSettings = {
-    accordionMode: true,
-    showSelectedOption: true,
-    selectedOptionClass: 'my-selected-option'
-  };
-
 }

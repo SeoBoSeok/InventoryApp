@@ -89,4 +89,8 @@
         <variable name="APP_NAME" value="inventory" />
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
+    <plugin name="cordova-plugin-camera" spec="^3.0.0">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="your usage message" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="your usage message" />
+    </plugin>
 </widget>

@@ -4,6 +4,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
 
+import { Platform } from 'ionic-angular';
+
+import { Camera, CameraOptions } from '@ionic-native/camera';
+// import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { normalizeURL } from 'ionic-angular';
+
+
 /**
  * Generated class for the AddInventoryListPage page.
  *
@@ -19,21 +26,24 @@ import { ToastService } from '../../services/toast/toast.service';
 export class AddInventoryListPage {
   item: Item = {
     name : '',
-    quantity : undefined,
+    quantity : 1,
     price: undefined,
     desc: '',
     history: '',
-    star: undefined,
-    date: new Date
+    star: 0,
+    date: '',
   }
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private inventory: InventoryListService,
-    private toast: ToastService
+    private toast: ToastService,
+    private camera: Camera,
+    // private vision: GoogleCloudVisionServiceProvider,
+    public platform: Platform
   ) {
-
+    this.item.date = new Date().toISOString();
   }
 
   ionViewDidLoad() {
@@ -45,6 +55,45 @@ export class AddInventoryListPage {
       this.toast.show(`${item.name} saved`);
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
+  }
+
+  takePhoto() {
+    const options: CameraOptions = {
+      quality: 100,
+      targetHeight: 500,
+      targetWidth: 500,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    // this.camera.getPicture(options).then((imageData) => {
+    //   this.vision.getLabels(imageData).subscribe((result) => {
+    //     // this.inventory.addInventory(imageData);
+    //     this.toast.show(imageData);
+    //   }, err => {
+    //     this.toast.show(err);
+    //   });
+    // }, err => {
+    //   this.toast.show(err);
+    // });
+    this.camera.getPicture(options).then((imageData) => {
+
+      let base64Image = null;
+
+      //get photo from the camera based on platform type
+      if (this.platform.is('ios'))
+        base64Image = normalizeURL(imageData);
+      else
+        base64Image = "data:image/jpeg;base64," + imageData;
+
+      //add photo to the array of photos
+      // this.toast.show(base64Image);
+      this.addItem(imageData);
+
+    }, (error) => {
+      console.debug("Unable to obtain picture: " + error, "app");
+      console.log(error);
+    });
   }
 
 }

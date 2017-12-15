@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <!-- <ion-buttons start>
+    <ion-buttons start>
        <button ion-button>
         <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons> -->
+      </button> 
+    </ion-buttons>
 
     <ion-title>
-      <img src="assets/imgs/title.png">
-    </ion-title>
-
+        <img src="assets/imgs/title.png">
+    </ion-title> 
+  
     <ion-buttons end><!-- -->
-      <button navPush="AddInventoryListPage" ion-button><!-- -->
+      <button navPush="AddInventoryListPage" ion-button><!-- -->  
         <ion-icon name="add"></ion-icon><!-- -->
       </button><!-- -->
     </ion-buttons><!-- -->
@@ -19,10 +19,7 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="openModal()">리뷰 추가</button>
-
-  <!--페이스북 로그인-->
-  <side-menu-content [settings]="sideMenuSettings" [options]="options" (selectOption)="selectOption($event)"></side-menu-content>
+  <!-- <side-menu-content [settings]="sideMenuSettings" [options]="options" (selectOption)="selectOption($event)"></side-menu-content> -->
   <button ion-button full *ngIf="!userData" (click)="loginwithFB()">Login</button>
   <ion-card *ngIf="userData">
     <ion-card-header> {{ userData.username }} </ion-card-header>
@@ -32,8 +29,6 @@
       <p>First_Name: {{ userData.first_name }}</p>
     </ion-card-content>
   </ion-card>
-
-
   <!-- <ion-list>
     <ion-list-header>Inventorys</ion-list-header>
     <ion-item *ngFor="let item of inventroyList$ | async"
@@ -43,24 +38,29 @@
   </ion-list> -->
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-col col-6 *ngFor="let item of inventroyList$ | async" detail-push navPush="ViewInventoryItemPage" [navParams]="{item: item}">
+      <ion-col col-6 col-md-4 *ngFor="let item of inventroyList$ | async" detail-push navPush="ViewInventoryItemPage" [navParams]="{item: item}">
         <ion-card>
           <ion-card-header class="ion-card-header">
-              <button ion-button icon-left small end>
-                <ion-icon name="time"></ion-icon>
-                <div>D - 99</div>
-              </button>
             <!-- <button ion-button icon-left item-right small>
               <ion-icon name="heart"></ion-icon>
               <div>12</div>
             </button> -->
+            <ion-icon name="heart" class="flex-right"> 12</ion-icon>
+            <h3>{{ item.name }}</h3>
           </ion-card-header>
           <ion-card-content class="ion-card-content">
-            <h3>{{ item.name }}</h3>
-            <ion-icon name="heart" class="flex-right"> 5</ion-icon>
-
-            <!--<p>수량: {{ item.quantity }}</p>-->
-            <!--<p>가격: {{ item.price }}</p>-->
+            <ion-list no-lines>
+              <ion-list-header>
+                후기: {{ item.history }}
+              </ion-list-header>
+            </ion-list>
+            <p>가격: {{ item.price }}</p>
+            <p>
+              <button ion-button icon-left small end>
+                <ion-icon name="time"></ion-icon>
+                <div>2 주전</div>
+              </button>
+            </p>
           </ion-card-content>
         </ion-card>
       </ion-col>
