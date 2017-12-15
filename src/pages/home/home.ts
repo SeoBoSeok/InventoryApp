@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, ModalOptions } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { Item } from "../../models/item/item.model";
 import { Observable } from 'rxjs/Observable';
@@ -55,7 +55,8 @@ export class HomePage {
     private inventory : InventoryListService,
     private facebook : Facebook,
     private toast: ToastService,
-    private splashScreen: SplashScreen
+    private splashScreen: SplashScreen,
+    private modal: ModalController
   ) {
     this.splashScreen.show();
     this.toast.showAtCenter('Hi');
@@ -82,6 +83,23 @@ export class HomePage {
       }).catch((error) => {
         this.toast.showAtCenter(`This FB login is only working on mobile environment`);
       })
+  }
+
+  openModal() {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss : false
+    }
+    const myData = {
+      date: '20171215',
+      stars: '5'
+    };
+
+    const myModal = this.modal.create('ModalpagePage', {data: myData}, myModalOptions);
+
+    myModal.present();
+    myModal.onDidDismiss(data => {
+      console.log(data);
+    })
   }
 
   public selectOption(option: MenuOptionModel): void {
