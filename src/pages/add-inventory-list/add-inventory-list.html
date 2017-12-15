@@ -5,63 +5,49 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar center color="primary">
-    <ion-title>Add Inventory</ion-title>
+  <ion-navbar>    
+    <ion-title>
+        <img src="assets/imgs/title.png">        
+    </ion-title>  
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Name</ion-label>
-    <ion-input [(ngModel)]="item.name" placeholder="Inventory List"></ion-input> <!-- [(ngModel)]="" -->
+    <ion-label stacked>물건 이름</ion-label>
+     <ion-input [(ngModel)]="item.name" placeholder="이름"></ion-input>    
   </ion-item>
 
   <ion-item>
-    <ion-label>Quantity</ion-label>
-    <ion-input [(ngModel)]="item.quantity" placeholder="1" type="number"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <ion-label stacked>구매 일시</ion-label>
+    <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="item.date"></ion-datetime>    
   </ion-item>
 
   <ion-item>
-    <ion-label>Price</ion-label>
-    <ion-input [(ngModel)]="item.price" placeholder="1000000000000" type="number"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <ion-label stacked>수량</ion-label>
+    <ion-input [(ngModel)]="item.quantity" placeholder="1" type="number"></ion-input>   
   </ion-item>
 
   <ion-item>
-    <ion-label>Description</ion-label>
-    <ion-input [(ngModel)]="item.desc" type="textarea"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <ion-label stacked>구매 가격</ion-label>
+    <ion-input [(ngModel)]="item.price" placeholder="10000" type="number"></ion-input>    
   </ion-item>
 
   <ion-item>
-    <ion-label>History</ion-label>
-    <ion-input [(ngModel)]="item.history" type="text"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <ion-label stacked>기록 사항</ion-label>    
+    <ion-textarea [(ngModel)]="item.desc" rows="3" placeholder="Comment"></ion-textarea>
   </ion-item>
 
-  <ion-item>
-    <ion-label>star</ion-label>
-    <ion-input [(ngModel)]="item.star" type="number"></ion-input>
-    <!-- [(ngModel)]="" -->
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="item.date"></ion-datetime>
-  </ion-item>
-
-  <!-- {{ item | json }} -->
-
-  <button ion-button block clear (click)="addItem(item)">Add</button>
-
-  <ion-fab bottom right>
+  <div class="btnForAdd">
+    <button ion-button clear (click)="addItem(item)">취소</button>
+    <button ion-button clear (click)="addItem(item)">등록하기</button>
+  </div>
+ 
+  <!-- <ion-fab bottom right>
     <button ion-fab (click)="takePhoto()">
       <ion-icon name="camera"></ion-icon>
     </button>
-  </ion-fab>
+  </ion-fab> -->
 
 </ion-content>

@@ -26,12 +26,12 @@ import { normalizeURL } from 'ionic-angular';
 export class AddInventoryListPage {
   item: Item = {
     name : '',
-    quantity : undefined,
+    quantity : 1,
     price: undefined,
     desc: '',
     history: '',
-    star: undefined,
-    date: new Date
+    star: 0,
+    date: '',
   }
 
   constructor(
@@ -43,7 +43,7 @@ export class AddInventoryListPage {
     // private vision: GoogleCloudVisionServiceProvider,
     public platform: Platform
   ) {
-
+    this.item.date = new Date().toISOString();
   }
 
   ionViewDidLoad() {
