@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, ModalOptions } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { Item } from "../../models/item/item.model";
 import { Observable } from 'rxjs/Observable';
@@ -19,13 +19,14 @@ export class HomePage {
 
   userData = null;
   inventroyList$: Observable<Item[]>;
-
+  
   constructor(
     public navCtrl: NavController,
     private inventory : InventoryListService,
     private facebook : Facebook,
     private toast: ToastService,
-    private splashScreen: SplashScreen
+    private splashScreen: SplashScreen,
+    private modal: ModalController
   ) {
     this.splashScreen.show();
     this.toast.showAtCenter('Hi');

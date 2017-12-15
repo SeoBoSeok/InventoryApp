@@ -21,6 +21,6 @@ export class GoogleCloudVisionServiceProvider {
         }
       ]
     }
-    return this.http.post('https://vision.googleapis.com/v1/images:annotate?key=' + FIREBASE_CONFIG.googleCloudVisionAPIKey, body);
+    //return this.http.post('https://vision.googleapis.com/v1/images:annotate?key=' + FIREBASE_CONFIG.googleCloudVisionAPIKey, body);
   }
 }
