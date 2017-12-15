@@ -7,8 +7,8 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { ToastService } from '../../services/toast/toast.service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MenuOptionModel } from "../../../shared/side-menu-content/models/menu-option-model";
-import { SideMenuSettings } from "../../../shared/side-menu-content/models/side-menu-settings";
+// import { MenuOptionModel } from "../../../shared/side-menu-content/models/menu-option-model";
+// import { SideMenuSettings } from "../../../shared/side-menu-content/models/side-menu-settings";
 
 @IonicPage()
 @Component({
@@ -19,36 +19,36 @@ export class HomePage {
 
   userData = null;
   inventroyList$: Observable<Item[]>;
-  menuOption: MenuOptionModel = {
-    displayName: 'Option Name',
-    subItems: [
-      {
-        // With icon
-        iconName: 'ios-basket',
-        displayName: 'Sub Option 1'
-      },
-      {
-        // Without icon
-        displayName: 'Sub Option 2'
-      },
-      {
-        // Special option with icon
-        iconName: 'log-in',
-        displayName: 'Login',
-        custom: {
-          isLogin: true
-        }
-      },
-      {
-        // Another special option but without icon
-        displayName: 'Spanish',
-        custom: {
-          shouldChangeLanguage: true,
-          targetLanguage: 'ES'
-        }
-      }
-    ]
-  };
+  // menuOption: MenuOptionModel = {
+  //   displayName: 'Option Name',
+  //   subItems: [
+  //     {
+  //       // With icon
+  //       iconName: 'ios-basket',
+  //       displayName: 'Sub Option 1'
+  //     },
+  //     {
+  //       // Without icon
+  //       displayName: 'Sub Option 2'
+  //     },
+  //     {
+  //       // Special option with icon
+  //       iconName: 'log-in',
+  //       displayName: 'Login',
+  //       custom: {
+  //         isLogin: true
+  //       }
+  //     },
+  //     {
+  //       // Another special option but without icon
+  //       displayName: 'Spanish',
+  //       custom: {
+  //         shouldChangeLanguage: true,
+  //         targetLanguage: 'ES'
+  //       }
+  //     }
+  //   ]
+  // };
 
   constructor(
     public navCtrl: NavController,
@@ -84,20 +84,20 @@ export class HomePage {
       })
   }
 
-  public selectOption(option: MenuOptionModel): void {
-    if (option.custom && option.custom.isLogin) {
-      // Handle the login...
-    } else if (option.custom && option.custom.isLogout) {
-      // Handle the logout...
-    } else if (option.component) {
-      // Push or set as root the option.component page
-    }
-  }
+  // public selectOption(option: MenuOptionModel): void {
+  //   if (option.custom && option.custom.isLogin) {
+  //     // Handle the login...
+  //   } else if (option.custom && option.custom.isLogout) {
+  //     // Handle the logout...
+  //   } else if (option.component) {
+  //     // Push or set as root the option.component page
+  //   }
+  // }
 
-  public sideMenuSettings: SideMenuSettings = {
-    accordionMode: true,
-    showSelectedOption: true,
-    selectedOptionClass: 'my-selected-option'
-  };
+  // public sideMenuSettings: SideMenuSettings = {
+  //   accordionMode: true,
+  //   showSelectedOption: true,
+  //   selectedOptionClass: 'my-selected-option'
+  // };
 
 }

@@ -27,6 +27,12 @@ InvenStory App is a simple managing my own product application built with Ionic3
 - [ ] Test
 
 
+## Dependencies
+
+- npm install angularfire2 firebase --save
+- ionic cordova plugin add cordova-plugin-camera
+- npm install promise-polyfill --save-exact
+
 
 ## Installation
 
