@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Item } from "../../models/item/item.model";
+import { HistoryItem } from "../../models/item/item.historymodel";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
@@ -24,14 +25,21 @@ import { normalizeURL } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
+  historyitem : HistoryItem = {
+    date: '',
+    title: '',
+    desc: '',
+    star: ''
+  }
+
   item: Item = {
     name : '',
-    quantity : 1,
+    quantity : undefined,
     price: undefined,
     desc: '',
-    history: '',
-    star: 0,
-    date: '',
+    history: [ this.historyitem ],
+    star: undefined,
+    date: ''
   }
 
   constructor(
@@ -43,7 +51,7 @@ export class AddInventoryListPage {
     // private vision: GoogleCloudVisionServiceProvider,
     public platform: Platform
   ) {
-    this.item.date = new Date().toISOString();
+
   }
 
   ionViewDidLoad() {
