@@ -5,16 +5,9 @@
         <ion-icon name="menu"></ion-icon>
       </button> 
     </ion-buttons> -->
-
     <ion-title>
         <img src="assets/imgs/title.png">        
-    </ion-title> 
-  
-    <ion-buttons end><!-- -->
-      <button navPush="AddInventoryListPage" ion-button><!-- -->  
-        <ion-icon name="add"></ion-icon><!-- -->
-      </button><!-- -->
-    </ion-buttons><!-- -->
+    </ion-title>   
   </ion-navbar>
 </ion-header>
 
@@ -61,4 +54,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-fab right bottom>
+   <button ion-fab navPush="AddInventoryListPage"><ion-icon name="add"></ion-icon></button>
+ </ion-fab>
 </ion-content>
