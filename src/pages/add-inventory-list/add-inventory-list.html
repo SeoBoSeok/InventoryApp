@@ -38,9 +38,22 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>History</ion-label>
-    <ion-input [(ngModel)]="item.history" type="text"></ion-input>
-    <!-- [(ngModel)]="" -->
+    <!-- <ion-label>History</ion-label> -->
+    <!-- <ion-input [(ngModel)]="item.history" type="text"></ion-input> -->
+    <ion-label>Historydate</ion-label>
+    <ion-input [(ngModel)]="historyitem.date" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Historytitle</ion-label>
+    <ion-input [(ngModel)]="historyitem.title" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Historydesc</ion-label>
+    <ion-input [(ngModel)]="historyitem.desc" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Historystar</ion-label>
+    <ion-input [(ngModel)]="historyitem.star" type="text"></ion-input>
   </ion-item>
 
   <ion-item>

@@ -21,23 +21,69 @@
 </ion-header>
 
 <ion-content padding>
- <ion-item>
-    <ion-label>Name</ion-label>
-    <ion-input [(ngModel)]="item.name" placeholder="Inventory List"></ion-input> <!-- [(ngModel)]="" -->
-  </ion-item>
+  <ion-row>
+    <ion-col col-12 align-self-center>
+      {{item.name}} {{item.quantity}} {{item.price}}
+    </ion-col>
+    <ion-col col-12 align-self-center>
+      {{item.desc}} {{item.star}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12 align-self-center>
+      {{item.history}} {{item.date}}
+    </ion-col>
+    <ion-col>
+      <ion-label>리뷰 타임라인</ion-label>
+      <ion-icon name="add-circle" color="vibrant" (click)="openModal()"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>물건 이름</ion-label>
+      <ion-input [(ngModel)]="item.name" placeholder="item.name" type="text"></ion-input>
+    </ion-col>
+  </ion-row>
+<ion-row>
+  <ion-col col-12>
+    <ion-label>구매 일시</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="item.date"></ion-datetime>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col col-12>
+    <ion-label>구매 가격 (￦)</ion-label>
+    <ion-input [(ngModel)]="item.price" placeholder="item.price" type="number"></ion-input>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col col-12>
+    <ion-label>기록 사항</ion-label>
+    <ion-textarea [(ngModel)]="item.desc" placeholder="item.desc" type="textarea"></ion-textarea>
+  </ion-col>
+</ion-row>
 
-  <ion-item>
-    <ion-label>Quantity</ion-label>
-    <ion-input [(ngModel)]="item.quantity" placeholder="1" type="number"></ion-input>
-    <!-- [(ngModel)]="" -->
-  </ion-item>
+<!-- <ion-row>
+  <ion-col col-12>
+    <ion-label>기록 사항</ion-label>
+    <ion-textarea [(ngModel)]="item.historyitem.title" placeholder="item.desc" type="textarea"></ion-textarea>
+  </ion-col>
+</ion-row>
 
-  <ion-item>
-    <ion-label>Price</ion-label>
-    <ion-input [(ngModel)]="item.price" placeholder="1000000000000" type="number"></ion-input>
-    <!-- [(ngModel)]="" -->
-  </ion-item>
+<ion-row>
+  <ion-col col-12>
+    <ion-label>기록 사항</ion-label>
+    <ion-textarea [(ngModel)]="item.historyitem.desc" placeholder="item.desc" type="textarea"></ion-textarea>
+  </ion-col>
+</ion-row>
 
-  <button ion-button block clear (click)="saveItem(item)">Save</button>
-  <button ion-button block clear color="danger" (click)="removeItem(item)">Remove</button>
+<ion-row>
+  <ion-col col-12>
+    <ion-label>기록 사항</ion-label>
+    <ion-textarea [(ngModel)]="item.historyitem.star" placeholder="item.desc" type="textarea"></ion-textarea>
+  </ion-col>
+</ion-row> -->
+
+  <button ion-button block clear (click)="saveItem(item)">수정하기</button>
+  <button ion-button block clear color="danger" (click)="removeItem(item)">삭제하기</button>
 </ion-content>

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Item } from "../../models/item/item.model";
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
+import { HistoryItem } from '../../models/item/item.historymodel';
+// import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the EditInventoryItemPage page.
@@ -18,6 +20,7 @@ import { ToastService } from '../../services/toast/toast.service';
 })
 export class EditInventoryItemPage {
   item: Item;
+  historyitem: HistoryItem;
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +55,16 @@ export class EditInventoryItemPage {
       this.toast.show(`${item.name} has been deleted`);
       this.navCtrl.setRoot('HomePage');
     })
+  }
+
+  addTimeline (item: Item) {
+    // this.inventory.editInventory(item)
+    // .then(() => {
+    //   this.toast.show(`${item.name} saved!`);
+    //   this.navCtrl.setRoot('HomePage');
+    // })
+    // modal
+    alert('1111');
   }
 
 }

@@ -19,36 +19,6 @@ export class HomePage {
 
   userData = null;
   inventroyList$: Observable<Item[]>;
-  // menuOption: MenuOptionModel = {
-  //   displayName: 'Option Name',
-  //   subItems: [
-  //     {
-  //       // With icon
-  //       iconName: 'ios-basket',
-  //       displayName: 'Sub Option 1'
-  //     },
-  //     {
-  //       // Without icon
-  //       displayName: 'Sub Option 2'
-  //     },
-  //     {
-  //       // Special option with icon
-  //       iconName: 'log-in',
-  //       displayName: 'Login',
-  //       custom: {
-  //         isLogin: true
-  //       }
-  //     },
-  //     {
-  //       // Another special option but without icon
-  //       displayName: 'Spanish',
-  //       custom: {
-  //         shouldChangeLanguage: true,
-  //         targetLanguage: 'ES'
-  //       }
-  //     }
-  //   ]
-  // };
 
   constructor(
     public navCtrl: NavController,
@@ -83,21 +53,4 @@ export class HomePage {
         this.toast.showAtCenter(`This FB login is only working on mobile environment`);
       })
   }
-
-  // public selectOption(option: MenuOptionModel): void {
-  //   if (option.custom && option.custom.isLogin) {
-  //     // Handle the login...
-  //   } else if (option.custom && option.custom.isLogout) {
-  //     // Handle the logout...
-  //   } else if (option.component) {
-  //     // Push or set as root the option.component page
-  //   }
-  // }
-
-  // public sideMenuSettings: SideMenuSettings = {
-  //   accordionMode: true,
-  //   showSelectedOption: true,
-  //   selectedOptionClass: 'my-selected-option'
-  // };
-
 }
