@@ -31,16 +31,17 @@
       <span data-name="main-item-star">{{item.star}}</span>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row class="">
     <ion-col>
       <ion-label>리뷰 타임라인</ion-label>
       <!-- <ion-icon name="add-circle" color="vibrant" (click)="openModal(item)" [navParams]="{item: item}"></ion-icon> -->
       <button ion-button detail-push (click)="openModal(item)">
         <ion-icon name="add-circle" color="vibrant"></ion-icon>
       </button>
+      <span class="reviewEdit">리뷰 추가하기</span>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row class="timeLineSection">
     <ion-col col-12 *ngFor="let timeline of item.history.slice().reverse()">
       <span data-name="timeline-date">{{timeline.date}}</span>
       <span data-name="timeline-category">{{timeline.category}}</span>
@@ -95,6 +96,6 @@
   </ion-col>
 </ion-row> -->
 
-  <button ion-button block clear (click)="saveItem(item)">수정하기</button>
-  <button ion-button block clear color="danger" (click)="removeItem(item)">삭제하기</button>
+  <ion-row><button ion-button  clear (click)="saveItem(item)" class="txtBtn" >수정하기</button></ion-row>
+  <ion-row><button ion-button  clear color="danger" (click)="removeItem(item)" class="txtBtn">삭제하기</button></ion-row>
 </ion-content>

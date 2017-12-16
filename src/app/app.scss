@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -17,24 +15,333 @@
 
 
 // 컬러
+$defaultGray: #505050;
 $invGreen: #169C78;
+$invGreenLigher: #34C29C;
+$bgGreen: #F0F7F5;
+$cardBorderGreen: #97BAB0;
+$starYellow: #FFC000;
+$white: #fff;
 
-// 메인윈도 - 글로벌 - 카드
-ion-card.card-md, ion-card.card-ios {
-    padding: 0;
-    margin: 0;
-    width: 100%;
+
+// 그림자
+@mixin cardShadow {
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
 }
+
+// D+데이트
+@mixin dPlusDate {
+
+}
+
+// 뷰  - 상세보기용
+@mixin contentView {
+  ion-row.row {
+    background: #fff;
+    border-color: $cardBorderGreen;
+    border-style: solid;
+    border-width: 0;
+    button.button-md,
+    button.button-ios {
+      // 편집 버튼
+      background: #fff;
+      color: $invGreen;
+      box-shadow: none;
+      border-radius: 50%;
+      border: 1px solid $invGreen;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 30px;
+    }
+  }
+
+  ion-row.row {
+    border-width: 0 1px 0 1px;
+    padding: 20px 20px 0 20px;
+
+    ion-label {
+      color: $invGreen;
+      font-weight: bold;
+    }
+    
+  }
+
+  ion-row.row:first-child {
+    // 일반 정보 섹션
+    border-width: 1px 1px 0 1px;
+    border-radius: 6px 6px 0 0;
+    
+    [data-name*="main-item"] {
+     
+    }
+    
+    [data-name="main-item-name"] {
+      float: left;
+      font-size: 2rem;
+      font-weight: bold;
+      color: $invGreen;
+      position: relative;
+      margin-top: 0;
+      margin-bottom: 50px;
+    }
+
+    [data-name="main-item-date"] {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.4rem;
+      color: $invGreen;
+      border: 1px solid $invGreen;
+      border-radius: 50px;
+      padding: 4px 0;
+    }
+
+    ion-col:last-child {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  ion-row.timeLineSection {
+    // 타임라인 row
+    // 리뷰 타임라인  
+    ion-col:first-child {
+      display: block !important;
+      width: 100% !important;
+      flex: 0 0 100% !important;
+      &:before {
+        display: none !important;
+      }
+      &:after {
+        display: none !important;
+      }
+    }
+
+    ion-col {
+      flex: 0 0 100%;
+      display: block;
+      position: relative;
+ 
+      &:nth-child(even):before {
+        // content: "";
+        // display: block;
+        // top: 10px;
+        // width: 50%;
+        // -webkit-box-sizing: border-box;
+        // box-sizing: border-box;
+        // height: 1px;
+        // border: 1px dashed $invGreenLigher;
+        // position: absolute;
+        // left: 80%;
+        // transform: translate(0, 100%);
+      }
+
+      // &:after {
+      //   content: "";
+      //   display: block;
+      //   top: 0;
+      //   width: 21px;
+      //   -webkit-box-sizing: border-box;
+      //   box-sizing: border-box;
+      //   height: 21px;
+      //   border-radius: 50%;
+      //   background: #fff;
+      //   border: 3px solid #169C78;
+      //   position: absolute;
+      //   left: 150%;
+      //   transform: translate(-150%, 100%);
+      // }
+    }
+
+    ion-col:last-child {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 40px;
+    }
+
+    ion-col:nth-child(even) {
+  
+    }
+
+    [data-name*="timeline-"] {
+      word-break: break-all;
+      display: block;
+      width: 100%;
+      
+    }
+
+    [data-name="timeline-date"] {
+      color: $white;
+      background-color: $invGreen;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 8px; 
+    }
+
+    [data-name="timeline-category"] {
+      float: left;
+      clear: both;
+      font-size: 1.3rem;
+      margin-top: 6px;
+    }
+
+    [data-name="timeline-desc"] {
+      float: left;
+      clear: both;
+      font-size: 1.3rem;
+      margin-top: 6px;
+    }
+  }
+
+  ion-row.row:last-child {
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 6px 6px;
+    padding: 0 20px 20px 20px;
+  }
+  
+  [data-name*="main-item-"] {
+    display: block;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 12px;
+    }
+  }
+
+  [data-name="main-item-star"] {
+    &:before {
+      content: "★";
+      display: inline-block;
+      color: $starYellow;
+    }
+    position: absolute;
+    top: 9px;
+    font-weight: bold;
+    font-size: 2rem;
+    color: $starYellow;
+    right: 0;
+  }
+
+
+  
+}
+
+
+// 등록, 수정 폼 스타일
+@mixin formStyle {
+  .input-wrapper {
+      ion-label.label-md, ion-label.label-ios {
+          color: $invGreen;
+          font-weight: bold;
+      }
+  }
+
+  .item-md, .item-ios {
+      padding-right: 16px;
+      padding-bottom: 20px;
+  }
+  
+  .btnForAdd {
+      background: #fff;
+  }
+
+  .button-md, .button-ios {
+      color: $invGreen;
+      font-size: 1.4rem;
+  }
+}
+
+
+// 헤더(툴바)
+.toolbar-content .title.title-md {
+  position: relative;
+  top: 4px;
+  text-align: center;
+}
+
+.toolbar-background-md, .toolbar-background-ios {
+  background: $white;
+}  
+
+
+// 배경
+ion-content.content-md,
+ion-content.content-ios {
+  background: $bgGreen;
+}
+
+
+// 홈 - 글로벌 - 카드
+ion-card.card-md,
+ion-card.card-ios {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $cardBorderGreen;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+  .ion-card-header,
+  .ion-card-content {
+    background: $white;
+  }
+  .ion-card-header {
+    h3 {
+      color: $invGreen;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      z-index: 1;
+      font-size: 1.5rem;
+    }
+  }
+  .ion-card-content {
+    .list-header-md {
+      border-top: 0;
+    }
+    .item-inner {
+      // 리뷰 부분 숨김
+      display: none;
+    }
+    ion-list+p {
+      // 가격 부분 숨김
+      display: none;
+    }
+  }
+  &:hover {
+    // 카드 : 마우스오버
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1), 0 0 4px $invGreen;
+  }
+}
+
 
 // 풀버튼 
-button.button-full-md, button.button-full-ios {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $invGreen;
+button.button-full-md,
+button.button-full-ios {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $invGreen;
+  border-radius: 100px;
+  box-shadow: none;
 }
 
+button.button-full-md:hover,
+button.button-full-ios:hover {
+  background-color: $invGreenLigher;
+}
+
+
 // 플로팅액션버튼
-button.fab-md, button.fab-ios {
-    background-color: $invGreen;    
+button.fab-md,
+button.fab-ios {
+  background-color: $invGreen;
+  ion-icon.icon-ios {
+    // ios fab 버튼 + 크기 조정
+    font-size: 3.2rem;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: $invGreenLigher;
+  }
 }

@@ -5,4 +5,7 @@ page-view-inventory-item {
     ion-item .item-inner .input-wrapper ion-input{
         border: 1px solid #000000;
     }
+
+    @include contentView();
 }
+
