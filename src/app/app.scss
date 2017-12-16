@@ -15,6 +15,7 @@
 
 
 // 컬러
+$defaultGray: #505050;
 $invGreen: #169C78;
 $invGreenLigher: #34C29C;
 $bgGreen: #F0F7F5;
@@ -28,6 +29,10 @@ $white: #fff;
   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
 }
 
+// D+데이트
+@mixin dPlusDate {
+
+}
 
 // 뷰  - 상세보기용
 @mixin contentView {
@@ -50,80 +55,152 @@ $white: #fff;
     }
   }
 
+  ion-row.row {
+    border-width: 0 1px 0 1px;
+    padding: 20px 20px 0 20px;
+
+    ion-label {
+      color: $invGreen;
+      font-weight: bold;
+    }
+    
+  }
+
   ion-row.row:first-child {
     // 일반 정보 섹션
     border-width: 1px 1px 0 1px;
     border-radius: 6px 6px 0 0;
-    padding: 20px 20px 0 20px;
-    >ion-col:first-child {
+    
+    [data-name*="main-item"] {
+     
+    }
+    
+    [data-name="main-item-name"] {
+      float: left;
       font-size: 2rem;
       font-weight: bold;
       color: $invGreen;
+      top: 22px;
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    [data-name="main-item-date"] {
+      display: block;
+      font-size: 1.4rem;
+      color: $invGreen;
+      border: 1px solid $invGreen;
+      border-radius: 50px;
+      padding: 4px 0;
+    }
+
+    ion-col:last-child {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  ion-row.row:nth-child(2) {
+    // 타임라인 row
+    // 리뷰 타임라인  
+    ion-col:first-child {
+      display: block !important;
+      width: 100% !important;
+      flex: 0 0 100% !important;
+    }
+
+    ion-col:nth-child(odd) {
+      flex: 0 0 40%;
+      position: relative;
+      transform: trnaslate(100%, 0);
+    }
+
+    ion-col:nth-child(even) {
+      flex: 0 0 40%;
+      position: relative;
+
+      &:nth-child(odd):before {
+        // content: "";
+        // display: block;
+        // top: 18px;
+        // width: 50%;
+        // -webkit-box-sizing: border-box;
+        // box-sizing: border-box;
+        // height: 1px;
+        // border: 1px dashed $invGreenLigher;
+        // position: absolute;
+        // left: 80%;
+      }
+
+      &:nth-child(even):before {
+        // content: "";
+        // display: block;
+        // top: 18px;
+        // width: 50%;
+        // -webkit-box-sizing: border-box;
+        // box-sizing: border-box;
+        // height: 1px;
+        // border: 1px dashed $invGreenLigher;
+        // position: absolute;
+        // right: 80%;
+      }
+
+      &:after {
+        content: "";
+        // display: block;
+        // top: 8px;
+        // width: 21px;
+        // -webkit-box-sizing: border-box;
+        // box-sizing: border-box;
+        // height: 21px;
+        // border-radius: 50%;
+        // background: #fff;
+        // border: 3px solid #169C78;
+        // position: absolute;
+        // left: 0;
+        /* -webkit-transform: translate(-150%, 0); */
+        /* transform: translate(-150%, 0); */
+      }
+    }
+    [data-name="timeline-date"] {
+      float: left;
+      color: $white;
+      background-color: $invGreen;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    [data-name="timeline-category"] {
+      float: left;
+      clear: both;
+      font-size: 1.3rem;
+      margin-top: 6px;
+    }
+
+    [data-name="timeline-desc"] {
+      float: left;
+      clear: both;
+      font-size: 1.3rem;
+      margin-top: 6px;
     }
   }
 
   ion-row.row:last-child {
-    //타임라인 섹션
     border-width: 0 1px 1px 1px;
     border-radius: 0 0 6px 6px;
     padding: 0 20px 20px 20px;
-    &:before {
-      content: "리뷰 타임라인";
-      color: $invGreen;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-      width: 100%;
-      padding: 5px;
-    }
-
-    ion-col {
-      flex: 0 0 40%;
-      &:nth-child(odd):before {
-        content: "";
-        display: block;
-        top: 18px;
-        width: 50%;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        height: 1px;
-        border: 1px dashed $invGreenLigher;
-        position: absolute;
-        left: 80%;
-     }
-      &:after {
-        content: "";
-        display: block;
-        top: 8px;
-        width: 21px;
-        box-sizing: border-box;
-        height: 21px;
-        border-radius: 50%;
-        background: $white;
-        border: 3px solid $invGreen;
-        position: absolute;
-        left: 150%;
-        transform: translate(-150%, 0);
-      }
-    }
   }
   
-  [data-name*="item-"] {
+  [data-name*="main-item-"] {
     display: block;
     margin-bottom: 20px;
-    &:before {
-      content: "";
-      color: $invGreen;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 10px;
-    }
     &:last-child {
       margin-bottom: 12px;
     }
   }
 
-  [data-name="item-star"] {
+  [data-name="main-item-star"] {
     &:before {
       content: "★";
       display: inline-block;
@@ -137,40 +214,10 @@ $white: #fff;
     right: 0;
   }
 
-  [data-name="item-desc"] {
-    &:before {
-      content: "기록 사항";
-    }
-  }
 
-  [data-name="item-quantity"] {
-    &:before {
-      content: "수량";
-    }
-  }
-
-  [data-name="item-price"] {
-    &:before {
-      content: "가격";
-    }
-  }
-
-  [data-name="item-date"] {
-    float: left;
-    color: $white;
-    background-color: $invGreen;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-weight: bold;
-  }
-
-  [data-name="item-history"] {
-    float: left;
-    clear: both;
-    font-size: 1.3rem;
-    margin-top: 6px;
-  }
+  
 }
+
 
 // 등록, 수정 폼 스타일
 @mixin formStyle {
