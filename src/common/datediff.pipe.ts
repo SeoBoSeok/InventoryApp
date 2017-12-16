@@ -8,7 +8,7 @@ export class DateDiffPipe implements PipeTransform {
 
     // var diff = today.valueOf() - date.valueOf();
 
-    return this.daysBetween(today, date);
+    return Math.abs(this.daysBetween(today, date));
   }
 
   daysBetween( date1, date2 ) {
