@@ -283,8 +283,24 @@ ion-card.card-ios {
   .ion-card-content {
     background: $white;
   }
-  .ion-card-header {
-    h3 {
+  ion-card-header {
+    >div {
+      color: $invGreen;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+  }
+  ion-list {
+    div:last-child {
+      color: $starYellow;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    div:last-child ion-icon {
+      font-weight: bold;
+    }
+  }
+    ion-label {
       color: $invGreen;
       font-weight: bold;
       position: absolute;
@@ -294,19 +310,18 @@ ion-card.card-ios {
       z-index: 1;
       font-size: 1.5rem;
     }
-  }
   .ion-card-content {
     .list-header-md {
       border-top: 0;
     }
-    .item-inner {
-      // 리뷰 부분 숨김
-      display: none;
-    }
-    ion-list+p {
-      // 가격 부분 숨김
-      display: none;
-    }
+    // .item-inner {
+    //   // 리뷰 부분 숨김
+    //   display: none;
+    // }
+    // ion-list+p {
+    //   // 가격 부분 숨김
+    //   display: none;
+    // }
   }
   &:hover {
     // 카드 : 마우스오버

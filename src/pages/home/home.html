@@ -4,8 +4,8 @@
     </ion-buttons>
 
     <ion-title>
-        <img src="assets/imgs/title.png">
-    </ion-title>   
+      <img src="assets/imgs/title.png">
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -36,28 +36,29 @@
               <ion-icon name="heart"></ion-icon>
               <div>12</div>
             </button> -->
-            <h3>{{ item.name }}</h3>
-            <ion-icon name="star" class="flex-right"> 12</ion-icon>
+            <div>D + {{item.date | dateDiff}}</div>
           </ion-card-header>
           <ion-card-content class="ion-card-content">
             <ion-list no-lines>
               <ion-list-header>
-                후기: {{ item.history }}
+                {{ item.name }}
               </ion-list-header>
+              <!-- <ion-list-footer> -->
+              <!-- <ion-content> -->
+              <div style="padding:5px 0px 25px;">
+                <ion-icon name="star" class="flex-right"> {{ item.star }}</ion-icon>
+              </div>
+              <!-- </ion-content> -->
+              <!-- </ion-list-footer> -->
             </ion-list>
-            <p>가격: {{ item.price }}</p>
-            <p>
-              <button ion-button icon-left small end>
-                <ion-icon name="time"></ion-icon>
-                <div>D + {{item.date | dateDiff}}</div>
-              </button>
-            </p>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-fab right bottom>
-   <button ion-fab navPush="AddInventoryListPage"><ion-icon name="add"></ion-icon></button>
- </ion-fab>
+    <button ion-fab navPush="AddInventoryListPage">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
