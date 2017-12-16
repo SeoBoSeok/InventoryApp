@@ -28,7 +28,7 @@ export class HomePage {
     private splashScreen: SplashScreen
   ) {
     this.splashScreen.show();
-    this.toast.showAtCenter('Hi');
+    // this.toast.showAtCenter('Hi');
     this.inventroyList$ = this.inventory
     .getInventoryList() // DB List
     .snapshotChanges() // Key and Value
