@@ -21,8 +21,15 @@ $invGreen: #169C78;
 $invGreenLigher: #34C29C;
 $bgGreen: #F0F7F5;
 $cardBorderGreen: #97BAB0;
+$starYellow: #FFC000;
 
 $white: #fff;
+
+// 그림자
+@mixin cardShadow {
+    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+}
+  
 
 
 // 헤더(툴바)
