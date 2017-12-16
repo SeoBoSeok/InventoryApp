@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Item } from "../../models/item/item.model";
+import { HistoryItem } from "../../models/item/item.historymodel";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
@@ -24,13 +25,16 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
+  historyitem: HistoryItem;
+
   item: Item = {
     name : '',
     quantity : 1,
-    price: 0,
-    desc: '',   
+    price: undefined,
+    desc: '',
+    history: [ this.historyitem ],
     star: 0,
-    date: '',
+    date: ''
   }
 
   constructor(
