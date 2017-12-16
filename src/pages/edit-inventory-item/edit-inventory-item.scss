@@ -5,4 +5,32 @@ page-edit-inventory-item {
     .toolbar-content {
         margin-left: 10px !important;
     }
+    @include contentView();
+    
+    button.button-md, button.button-ios {
+        &:after {
+            content: "리뷰 추가하기";
+            color: $invGreen;
+            font-weight: bold;
+        }
+    }
+
+    .reviewEdit {
+        color: $invGreen;
+        font-weight: bold;
+        position: relative;
+        bottom: 3px;
+    }
+
+    ion-row.row:first-child  {
+        ion-col:last-child {
+        border-bottom-width: 0;
+        }
+    }
+
+    .txtBtn {
+        width: 100% !important;
+        border: 0 !important;
+        overflow: hidden !important;
+    }
 }

@@ -101,7 +101,7 @@ $white: #fff;
     }
   }
 
-  ion-row.row:nth-child(2) {
+  ion-row.timeLineSection {
     // 타임라인 row
     // 리뷰 타임라인  
     ion-col:first-child {
@@ -111,79 +111,71 @@ $white: #fff;
       &:before {
         display: none !important;
       }
+      &:after {
+        display: none !important;
+      }
     }
 
     ion-col {
-      flex: 0 0 30%;
+      flex: 0 0 100%;
+      display: block;
       position: relative;
-      transform: trnaslate(100%, 0);
-
-      &:nth-child(even):before {
-        content: "";
-        display: block;
-        top: 18px;
-        width: 50%;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        height: 1px;
-        border: 1px dashed $invGreenLigher;
-        position: absolute;
-        left: 80%;
-      }
-
-      &:after {
-        content: "";
-        display: block;
-        top: 8px;
-        width: 21px;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        height: 21px;
-        border-radius: 50%;
-        background: #fff;
-        border: 3px solid #169C78;
-        position: absolute;
-        left: 0;
-        /* -webkit-transform: translate(-150%, 0); */
-        /* transform: translate(-150%, 0); */
-      }
-    }
-
-    ion-col:nth-child(even) {
-      flex: 0 0 40%;
-      position: relative;
-
-    
-
+ 
       &:nth-child(even):before {
         // content: "";
         // display: block;
-        // top: 18px;
+        // top: 10px;
         // width: 50%;
         // -webkit-box-sizing: border-box;
         // box-sizing: border-box;
         // height: 1px;
         // border: 1px dashed $invGreenLigher;
         // position: absolute;
-        // right: 80%;
+        // left: 80%;
+        // transform: translate(0, 100%);
       }
 
-      
+      // &:after {
+      //   content: "";
+      //   display: block;
+      //   top: 0;
+      //   width: 21px;
+      //   -webkit-box-sizing: border-box;
+      //   box-sizing: border-box;
+      //   height: 21px;
+      //   border-radius: 50%;
+      //   background: #fff;
+      //   border: 3px solid #169C78;
+      //   position: absolute;
+      //   left: 150%;
+      //   transform: translate(-150%, 100%);
+      // }
+    }
+
+    ion-col:last-child {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 40px;
+    }
+
+    ion-col:nth-child(even) {
+  
     }
 
     [data-name*="timeline-"] {
       word-break: break-all;
+      display: block;
+      width: 100%;
+      
     }
 
     [data-name="timeline-date"] {
-      float: left;
       color: $white;
       background-color: $invGreen;
       padding: 6px 10px;
       border-radius: 6px;
       font-weight: bold;
       font-size: 1.3rem;
-      
+      margin-bottom: 8px; 
     }
 
     [data-name="timeline-category"] {
@@ -333,6 +325,7 @@ button.button-full-ios {
   border-radius: 100px;
   box-shadow: none;
 }
+
 button.button-full-md:hover,
 button.button-full-ios:hover {
   background-color: $invGreenLigher;
