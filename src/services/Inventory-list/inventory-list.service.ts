@@ -1,6 +1,7 @@
 import { Item } from '../../models/item/item.model';
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
+// import { HistoryItem } from '../../models/item/item.historymodel';
 
 @Injectable()
 export class InventoryListService {
@@ -26,5 +27,4 @@ export class InventoryListService {
     removeInventory (item:Item) {
         return this.inventoryListRef.remove(item.key);
     }
-
 }

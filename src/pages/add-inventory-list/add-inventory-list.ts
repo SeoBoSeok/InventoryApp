@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Item } from "../../models/item/item.model";
+import { HistoryItem } from "../../models/item/item.historymodel";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
 
 import { Platform } from 'ionic-angular';
 
-import { Camera, CameraOptions } from '@ionic-native/camera';
+// import { Camera, CameraOptions } from '@ionic-native/camera';
 // import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
-import { normalizeURL } from 'ionic-angular';
+// import { normalizeURL } from 'ionic-angular';
 
 
 /**
@@ -24,14 +25,17 @@ import { normalizeURL } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
+  
+  historyitem: HistoryItem;
+
   item: Item = {
     name : '',
-    quantity : 1,
+    quantity : undefined,
     price: undefined,
     desc: '',
-    history: '',
-    star: 0,
-    date: '',
+    history: [ this.historyitem ],
+    star: undefined,
+    date: ''
   }
 
   constructor(
@@ -39,11 +43,11 @@ export class AddInventoryListPage {
     public navParams: NavParams,
     private inventory: InventoryListService,
     private toast: ToastService,
-    private camera: Camera,
+    // private camera: Camera,
     // private vision: GoogleCloudVisionServiceProvider,
     public platform: Platform
   ) {
-    this.item.date = new Date().toISOString();
+
   }
 
   ionViewDidLoad() {
@@ -56,44 +60,43 @@ export class AddInventoryListPage {
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
   }
-
-  takePhoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      targetHeight: 500,
-      targetWidth: 500,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    // this.camera.getPicture(options).then((imageData) => {
-    //   this.vision.getLabels(imageData).subscribe((result) => {
-    //     // this.inventory.addInventory(imageData);
-    //     this.toast.show(imageData);
-    //   }, err => {
-    //     this.toast.show(err);
-    //   });
-    // }, err => {
-    //   this.toast.show(err);
-    // });
-    this.camera.getPicture(options).then((imageData) => {
-
-      let base64Image = null;
-
-      //get photo from the camera based on platform type
-      if (this.platform.is('ios'))
-        base64Image = normalizeURL(imageData);
-      else
-        base64Image = "data:image/jpeg;base64," + imageData;
-
-      //add photo to the array of photos
-      // this.toast.show(base64Image);
-      this.addItem(imageData);
-
-    }, (error) => {
-      console.debug("Unable to obtain picture: " + error, "app");
-      console.log(error);
-    });
-  }
-
 }
+
+// takePhoto() {
+  //   const options: CameraOptions = {
+  //     quality: 100,
+  //     targetHeight: 500,
+  //     targetWidth: 500,
+  //     destinationType: this.camera.DestinationType.DATA_URL,
+  //     encodingType: this.camera.EncodingType.PNG,
+  //     mediaType: this.camera.MediaType.PICTURE
+  //   }
+  //   // this.camera.getPicture(options).then((imageData) => {
+  //   //   this.vision.getLabels(imageData).subscribe((result) => {
+  //   //     // this.inventory.addInventory(imageData);
+  //   //     this.toast.show(imageData);
+  //   //   }, err => {
+  //   //     this.toast.show(err);
+  //   //   });
+  //   // }, err => {
+  //   //   this.toast.show(err);
+  //   // });
+  //   this.camera.getPicture(options).then((imageData) => {
+
+  //     let base64Image = null;
+
+  //     //get photo from the camera based on platform type
+  //     if (this.platform.is('ios'))
+  //       base64Image = normalizeURL(imageData);
+  //     else
+  //       base64Image = "data:image/jpeg;base64," + imageData;
+
+  //     //add photo to the array of photos
+  //     // this.toast.show(base64Image);
+  //     this.addItem(imageData);
+
+  //   }, (error) => {
+  //     console.debug("Unable to obtain picture: " + error, "app");
+  //     console.log(error);
+  //   });
+  // }

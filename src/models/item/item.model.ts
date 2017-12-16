@@ -1,10 +1,12 @@
+import { HistoryItem } from "./item.historymodel";
+
 export interface Item {
     key?: string,
     name: string,
-    quantity?: number,
+    quantity: number,
     price: number,
     desc: string,
-    history?: string,
-    star?: number,
+    history?: [ HistoryItem ],
+    star: number,
     date: string
 }

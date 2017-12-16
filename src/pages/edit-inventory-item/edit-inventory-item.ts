@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ModalOptions } from 'ionic-angular';
 import { Item } from "../../models/item/item.model";
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
+import { HistoryItem } from '../../models/item/item.historymodel';
+// import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the EditInventoryItemPage page.
@@ -18,12 +20,14 @@ import { ToastService } from '../../services/toast/toast.service';
 })
 export class EditInventoryItemPage {
   item: Item;
+  historyitem: HistoryItem;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private inventory: InventoryListService,
-    private toast: ToastService
+    private toast: ToastService,
+    private modal: ModalController
   ) {
   }
 
@@ -34,8 +38,9 @@ export class EditInventoryItemPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddInventoryListPage');
+    // console.log('ionViewDidLoad AddInventoryListPage');
     this.item = this.navParams.get('item');
+    console.log(this.item);
   }  
 
   saveItem (item: Item) {
@@ -54,4 +59,36 @@ export class EditInventoryItemPage {
     })
   }
 
+  openModal(data: HistoryItem) {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    }
+    // const myData = {
+    //   date: '20171215',
+    //   stars: '5'
+    // };
+    // const item = {
+    //   date: string,
+    //   title: string,
+    //   desc: string,
+    //   star: string
+    // }
+
+    const myModal = this.modal.create('ModalpagePage', { data: data }, myModalOptions);
+
+    myModal.present();
+    myModal.onDidDismiss(data => {
+      console.log(data);
+    })
+  }
+
+  // public selectOption(option: MenuOptionModel): void {
+  //   if (option.custom && option.custom.isLogin) {
+  //     // Handle the login...
+  //   } else if (option.custom && option.custom.isLogout) {
+  //     // Handle the logout...
+  //   } else if (option.component) {
+  //     // Push or set as root the option.component page
+  //   }
+  // }
 }

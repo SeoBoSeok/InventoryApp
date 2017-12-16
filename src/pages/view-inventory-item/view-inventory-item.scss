@@ -2,4 +2,7 @@ page-view-inventory-item {
     .back-button-text .back-button-text-ios{
         display: none!important;
     }    
+    ion-item .item-inner .input-wrapper ion-input{
+        border: 1px solid #000000;
+    }
 }

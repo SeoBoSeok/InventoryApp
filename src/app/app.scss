@@ -14,3 +14,27 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+// 컬러
+$invGreen: #169C78;
+
+// 메인윈도 - 글로벌 - 카드
+ion-card.card-md, ion-card.card-ios {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+// 풀버튼 
+button.button-full-md, button.button-full-ios {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $invGreen;
+}
+
+// 플로팅액션버튼
+button.fab-md, button.fab-ios {
+    background-color: $invGreen;    
+}

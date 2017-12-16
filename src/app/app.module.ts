@@ -16,8 +16,8 @@ import { InventoryListService } from '../services/Inventory-list/inventory-list.
 import { ToastService } from '../services/toast/toast.service';
 
 import { Facebook } from "@ionic-native/facebook";
-import { Camera } from '@ionic-native/camera';
-import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
+// import { Camera } from '@ionic-native/camera';
+// import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 // import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -42,8 +42,8 @@ import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-visi
     InventoryListService,
     ToastService,
     Facebook,
-    Camera,
-    GoogleCloudVisionServiceProvider
+    //Camera,
+    // GoogleCloudVisionServiceProvider
   ]
 })
 export class AppModule {}
