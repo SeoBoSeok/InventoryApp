@@ -12,6 +12,8 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
 // 컬러
 $invGreen: #169C78;
 $invGreenLigher: #34C29C;
@@ -19,10 +21,181 @@ $bgGreen: #F0F7F5;
 $cardBorderGreen: #97BAB0;
 $starYellow: #FFC000;
 $white: #fff;
+
+
 // 그림자
 @mixin cardShadow {
   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
 }
+
+
+// 뷰  - 상세보기용
+@mixin contentView {
+  ion-row.row {
+    background: #fff;
+    border-color: $cardBorderGreen;
+    border-style: solid;
+    border-width: 0;
+    button.button-md,
+    button.button-ios {
+      // 편집 버튼
+      background: #fff;
+      color: $invGreen;
+      box-shadow: none;
+      border-radius: 50%;
+      border: 1px solid $invGreen;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 30px;
+    }
+  }
+
+  ion-row.row:first-child {
+    // 일반 정보 섹션
+    border-width: 1px 1px 0 1px;
+    border-radius: 6px 6px 0 0;
+    padding: 20px 20px 0 20px;
+    >ion-col:first-child {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $invGreen;
+    }
+  }
+
+  ion-row.row:last-child {
+    //타임라인 섹션
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 6px 6px;
+    padding: 0 20px 20px 20px;
+    &:before {
+      content: "리뷰 타임라인";
+      color: $invGreen;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+      width: 100%;
+      padding: 5px;
+    }
+
+    ion-col {
+      flex: 0 0 40%;
+      &:nth-child(odd):before {
+        content: "";
+        display: block;
+        top: 18px;
+        width: 50%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 1px;
+        border: 1px dashed $invGreenLigher;
+        position: absolute;
+        left: 80%;
+     }
+      &:after {
+        content: "";
+        display: block;
+        top: 8px;
+        width: 21px;
+        box-sizing: border-box;
+        height: 21px;
+        border-radius: 50%;
+        background: $white;
+        border: 3px solid $invGreen;
+        position: absolute;
+        left: 150%;
+        transform: translate(-150%, 0);
+      }
+    }
+  }
+  
+  [data-name*="item-"] {
+    display: block;
+    margin-bottom: 20px;
+    &:before {
+      content: "";
+      color: $invGreen;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+    &:last-child {
+      margin-bottom: 12px;
+    }
+  }
+
+  [data-name="item-star"] {
+    &:before {
+      content: "★";
+      display: inline-block;
+      color: $starYellow;
+    }
+    position: absolute;
+    top: 9px;
+    font-weight: bold;
+    font-size: 2rem;
+    color: $starYellow;
+    right: 0;
+  }
+
+  [data-name="item-desc"] {
+    &:before {
+      content: "기록 사항";
+    }
+  }
+
+  [data-name="item-quantity"] {
+    &:before {
+      content: "수량";
+    }
+  }
+
+  [data-name="item-price"] {
+    &:before {
+      content: "가격";
+    }
+  }
+
+  [data-name="item-date"] {
+    float: left;
+    color: $white;
+    background-color: $invGreen;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  [data-name="item-history"] {
+    float: left;
+    clear: both;
+    font-size: 1.3rem;
+    margin-top: 6px;
+  }
+}
+
+// 등록, 수정 폼 스타일
+@mixin formStyle {
+  .input-wrapper {
+      ion-label.label-md, ion-label.label-ios {
+          color: $invGreen;
+          font-weight: bold;
+      }
+  }
+
+  .item-md, .item-ios {
+      padding-right: 16px;
+      padding-bottom: 20px;
+  }
+  
+  .btnForAdd {
+      background: #fff;
+  }
+
+  .button-md, .button-ios {
+      color: $invGreen;
+      font-size: 1.4rem;
+  }
+}
+
 
 // 헤더(툴바)
 .toolbar-content .title.title-md {
@@ -31,13 +204,19 @@ $white: #fff;
   text-align: center;
 }
 
-// 컨텐츠뷰 - 배경
+.toolbar-background-md, .toolbar-background-ios {
+  background: $white;
+}  
+
+
+// 배경
 ion-content.content-md,
 ion-content.content-ios {
   background: $bgGreen;
 }
 
-// 메인윈도 - 글로벌 - 카드
+
+// 홈 - 글로벌 - 카드
 ion-card.card-md,
 ion-card.card-ios {
   padding: 0;
@@ -81,172 +260,33 @@ ion-card.card-ios {
   }
 }
 
- // 풀버튼 
- button.button-full-md,
- button.button-full-ios {
-   width: 94%;
-   margin-left: auto;
-   margin-right: auto;
-   background-color: $invGreen;
-   border-radius: 100px;
-   box-shadow: none;
- }
- button.button-full-md:hover,
- button.button-full-ios:hover {
-   background-color: $invGreenLigher;
- }
- // 플로팅액션버튼
- button.fab-md,
- button.fab-ios {
-   background-color: $invGreen;
-   ion-icon.icon-ios {
-     // ios fab 버튼 + 크기 조정
-     font-size: 3.2rem;
-     font-weight: bold;
-   }
-   &:hover {
-     background-color: $invGreenLigher;
-   }
- }
 
-@mixin contentView {
- 
-  [data-name="wrapper"] {
-    @include cardShadow();
-    border-radius: 6px;
+// 풀버튼 
+button.button-full-md,
+button.button-full-ios {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $invGreen;
+  border-radius: 100px;
+  box-shadow: none;
+}
+button.button-full-md:hover,
+button.button-full-ios:hover {
+  background-color: $invGreenLigher;
+}
+
+
+// 플로팅액션버튼
+button.fab-md,
+button.fab-ios {
+  background-color: $invGreen;
+  ion-icon.icon-ios {
+    // ios fab 버튼 + 크기 조정
+    font-size: 3.2rem;
+    font-weight: bold;
   }
-  ion-row.row {
-    background: #fff;
-    border-color: $cardBorderGreen;
-    border-style: solid;
-    border-width: 0;
-    button.button-md,
-    button.button-ios {
-      // 편집 버튼
-      background: #fff;
-      color: $invGreen;
-      box-shadow: none;
-      border-radius: 50%;
-      border: 1px solid $invGreen;
-      width: 32px;
-      height: 32px;
-      margin-bottom: 30px;
-    }
-  }
-  ion-row.row:first-child {
-    // 일반 정보 섹션
-    border-width: 1px 1px 0 1px;
-    border-radius: 6px 6px 0 0;
-    padding: 20px 20px 0 20px;
-    >ion-col:first-child {
-      font-size: 2rem;
-      font-weight: bold;
-      color: $invGreen;
-    }
-    [data-name*="item-"] {
-      display: block;
-      margin-bottom: 20px;
-      &:before {
-        content: "";
-        color: $invGreen;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 10px;
-      }
-      &:last-child {
-        margin-bottom: 12px;
-      }
-    }
-    [data-name="item-star"] {
-      &:before {
-        content: "★";
-        display: inline-block;
-        color: $starYellow;
-      }
-      position: absolute;
-      top: 9px;
-      font-weight: bold;
-      font-size: 2rem;
-      color: $starYellow;
-      right: 0;
-    }
-    [data-name="item-desc"] {
-      &:before {
-        content: "기록 사항";
-      }
-    }
-    [data-name="item-quantity"] {
-      &:before {
-        content: "수량";
-      }
-    }
-    [data-name="item-price"] {
-      &:before {
-        content: "가격";
-      }
-    }
-  }
-  ion-row.row:last-child {
-    //타임라인 섹션
-    border-width: 0 1px 1px 1px;
-    border-radius: 0 0 6px 6px;
-    padding: 0 20px 20px 20px;
-    &:before {
-      content: "리뷰 타임라인";
-      color: $invGreen;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-      width: 100%;
-      padding: 5px;
-    }
-    ion-col {
-      flex: 0 0 40%;
-      [data-name="item-date"] {
-        float: left;
-        color: $white;
-        background-color: $invGreen;
-        padding: 6px 10px;
-        border-radius: 6px;
-        font-weight: bold;
-      }
-      [data-name="item-history"] {
-        float: left;
-        clear: both;
-        font-size: 1.3rem;
-        margin-top: 6px;
-      }
-      &:nth-child(odd):before {
-        content: "";
-        display: block;
-        top: 18px;
-        width: 50%;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        height: 1px;
-        /* background: #169c78; */
-        border: 1px dashed #169C78;
-        position: absolute;
-        left: 80%;
-        /* margin-left: 50%; */
-        /* -webkit-transform: translate(-150%, 0); */
-        /* transform: translate(-150%, 0); */
-      }
-      &:after {
-        content: "";
-        display: block;
-        top: 8px;
-        width: 21px;
-        box-sizing: border-box;
-        height: 21px;
-        border-radius: 50%;
-        background: $white;
-        border: 3px solid $invGreen;
-        position: absolute;
-        left: 150%;
-        /* margin-left: 50%; */
-        transform: translate(-150%, 0);
-      }
-    }
+  &:hover {
+    background-color: $invGreenLigher;
   }
 }
