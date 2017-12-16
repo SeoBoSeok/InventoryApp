@@ -72,6 +72,10 @@ export class AddInventoryListPage {
     })
   }
 
+  cancel () {
+    this.navCtrl.setRoot('HomePage');
+  }
+
   // takePhoto() {
   //   const options: CameraOptions = {
   //     quality: 100,
