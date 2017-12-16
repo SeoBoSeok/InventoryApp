@@ -28,7 +28,7 @@ export class ModalpagePage {
     category: '',
     title: '',
     desc: '',
-    star: ''
+    star: 3
   };
 
   constructor(public navCtrl: NavController, 
