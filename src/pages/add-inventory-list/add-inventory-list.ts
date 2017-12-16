@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Item } from "../../models/item/item.model";
-import { HistoryItem } from "../../models/item/item.historymodel";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
 import { ToastService } from '../../services/toast/toast.service';
@@ -25,17 +24,13 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
-  
-  historyitem: HistoryItem;
-
   item: Item = {
     name : '',
-    quantity : undefined,
-    price: undefined,
-    desc: '',
-    history: [ this.historyitem ],
-    star: undefined,
-    date: ''
+    quantity : 1,
+    price: 0,
+    desc: '',   
+    star: 0,
+    date: '',
   }
 
   constructor(
@@ -47,7 +42,7 @@ export class AddInventoryListPage {
     // private vision: GoogleCloudVisionServiceProvider,
     public platform: Platform
   ) {
-
+    this.item.date = new Date().toISOString();
   }
 
   ionViewDidLoad() {
@@ -60,9 +55,8 @@ export class AddInventoryListPage {
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
   }
-}
 
-// takePhoto() {
+  // takePhoto() {
   //   const options: CameraOptions = {
   //     quality: 100,
   //     targetHeight: 500,
@@ -71,16 +65,16 @@ export class AddInventoryListPage {
   //     encodingType: this.camera.EncodingType.PNG,
   //     mediaType: this.camera.MediaType.PICTURE
   //   }
-  //   // this.camera.getPicture(options).then((imageData) => {
-  //   //   this.vision.getLabels(imageData).subscribe((result) => {
-  //   //     // this.inventory.addInventory(imageData);
-  //   //     this.toast.show(imageData);
-  //   //   }, err => {
-  //   //     this.toast.show(err);
-  //   //   });
-  //   // }, err => {
-  //   //   this.toast.show(err);
-  //   // });
+    // this.camera.getPicture(options).then((imageData) => {
+    //   this.vision.getLabels(imageData).subscribe((result) => {
+    //     // this.inventory.addInventory(imageData);
+    //     this.toast.show(imageData);
+    //   }, err => {
+    //     this.toast.show(err);
+    //   });
+    // }, err => {
+    //   this.toast.show(err);
+    // });
   //   this.camera.getPicture(options).then((imageData) => {
 
   //     let base64Image = null;
@@ -100,3 +94,5 @@ export class AddInventoryListPage {
   //     console.log(error);
   //   });
   // }
+
+}
