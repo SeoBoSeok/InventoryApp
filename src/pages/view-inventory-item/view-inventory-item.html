@@ -33,9 +33,32 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col col-12 align-self-center>
-    {{item.history}}
-    {{item.date}}
+    <ion-col col-12 *ngFor="let timeline of item.history.slice().reverse()">
+     {{timeline.date}} {{timeline.category}} {{timeline.title}} {{timeline.desc}} {{timeline.star}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>물건 이름</ion-label>
+      {{item.name}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>구매 일시</ion-label>
+      {{item.date}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>구매 가격 (￦)</ion-label>
+       {{item.price}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>기록 사항</ion-label>
+      {{item.desc}}
     </ion-col>
   </ion-row>
 </ion-content>
