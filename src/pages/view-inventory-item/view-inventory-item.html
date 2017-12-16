@@ -21,6 +21,7 @@
 </ion-header>
 
 <ion-content padding>
+<<<<<<< HEAD
      <ion-row>
       <ion-col col-12 align-self-center>
         <div>{{item.name}} </div>
@@ -43,5 +44,47 @@
         <span data-name="item-history">{{item.history}}</span>
       </ion-col>
     </ion-row>
+=======
+  <ion-row>
+    <ion-col col-12 align-self-center>
+       {{item.name}} {{item.quantity}} {{item.price}}
+    </ion-col>
+    <ion-col col-12 align-self-center>
+      <button navPush="EditInventoryItemPage" ion-button detail-push [navParams]="{item: item}">
+        <ion-icon name="brush"></ion-icon>
+      </button>
+      {{item.desc}} {{item.star}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12 *ngFor="let timeline of item.history.slice().reverse()">
+     {{timeline.date}} {{timeline.category}} {{timeline.title}} {{timeline.desc}} {{timeline.star}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>물건 이름</ion-label>
+      {{item.name}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>구매 일시</ion-label>
+      {{item.date}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>구매 가격 (￦)</ion-label>
+       {{item.price}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <ion-label>기록 사항</ion-label>
+      {{item.desc}}
+    </ion-col>
+  </ion-row>
+>>>>>>> origin/master
 </ion-content>
 

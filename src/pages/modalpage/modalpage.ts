@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { FormsModule} from '@angular/forms';
-import {Review} from '../../models/item/review.model';
+// import { FormsModule} from '@angular/forms';
+// import { Review } from '../../models/item/review.model';
+import { Item } from "../../models/item/item.model";
+import { InventoryListService } from '../../services/Inventory-list/inventory-list.service';
+import { HistoryItem } from '../../models/item/item.historymodel';
 
 /**
  * Generated class for the ModalpagePage page.
@@ -16,21 +19,34 @@ import {Review} from '../../models/item/review.model';
   templateUrl: 'modalpage.html',
 })
 export class ModalpagePage {
-  review: Review = {
-    date : new Date,
-    category: '평가',
-    star: 3,
-    content: ''
+  // item: Item;
+  data: Item;
+  parentKey = '';
+
+  review: HistoryItem = {
+    date: '',
+    category: '',
+    title: '',
+    desc: '',
+    star: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {
-
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private view: ViewController,
+    private inventory: InventoryListService) {
+    // this.review.date = data.history.date
   }
 
   //데이터 입력받기
   ionViewWillLoad() {
-    const data = this.navParams.get('data');
-    console.log(data);
+    this.data = this.navParams.get('data');
+  }
+
+  addHistory(data: Item , review: HistoryItem) {
+    data.history.push(review);
+    this.inventory.editInventory(data);
+    this.view.dismiss();
   }
 
   closeModal() {

@@ -6,7 +6,7 @@ export interface Item {
     quantity: number,
     price: number,
     desc: string,
-    history: [ HistoryItem ],
+    history?: [ HistoryItem ],
     star: number,
     date: string
 }

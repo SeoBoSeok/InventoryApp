@@ -39,13 +39,18 @@
       </ion-select>
     </ion-item>
 
+  <ion-item>
+    <ion-label>제목</ion-label>
+    <ion-input [(ngModel)]="review.title" type="text"></ion-input>
+  </ion-item>
+
     <ion-item>
       <ion-label>내용</ion-label>
-      <ion-textarea [(ngModel)]="review.content" placeholder="Enter a description"></ion-textarea>
+      <ion-textarea [(ngModel)]="review.desc" placeholder="Enter a description"></ion-textarea>
     </ion-item>
   </ion-list>
   <ion-buttons end>
     <button ion-button (click)="closeModal()">취소</button>
-    <button ion-button (click)="acceptModal()">적용</button>
+    <button ion-button (click)="addHistory(data, review)">적용</button>
   </ion-buttons>
 </ion-content>
