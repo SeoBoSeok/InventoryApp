@@ -25,16 +25,15 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
-  
   historyitem: HistoryItem;
 
   item: Item = {
     name : '',
-    quantity : undefined,
+    quantity : 1,
     price: undefined,
     desc: '',
     history: [ this.historyitem ],
-    star: undefined,
+    star: 0,
     date: ''
   }
 
@@ -47,7 +46,7 @@ export class AddInventoryListPage {
     // private vision: GoogleCloudVisionServiceProvider,
     public platform: Platform
   ) {
-
+    this.item.date = new Date().toISOString();
   }
 
   ionViewDidLoad() {
@@ -60,9 +59,8 @@ export class AddInventoryListPage {
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
   }
-}
 
-// takePhoto() {
+  // takePhoto() {
   //   const options: CameraOptions = {
   //     quality: 100,
   //     targetHeight: 500,
@@ -71,16 +69,16 @@ export class AddInventoryListPage {
   //     encodingType: this.camera.EncodingType.PNG,
   //     mediaType: this.camera.MediaType.PICTURE
   //   }
-  //   // this.camera.getPicture(options).then((imageData) => {
-  //   //   this.vision.getLabels(imageData).subscribe((result) => {
-  //   //     // this.inventory.addInventory(imageData);
-  //   //     this.toast.show(imageData);
-  //   //   }, err => {
-  //   //     this.toast.show(err);
-  //   //   });
-  //   // }, err => {
-  //   //   this.toast.show(err);
-  //   // });
+    // this.camera.getPicture(options).then((imageData) => {
+    //   this.vision.getLabels(imageData).subscribe((result) => {
+    //     // this.inventory.addInventory(imageData);
+    //     this.toast.show(imageData);
+    //   }, err => {
+    //     this.toast.show(err);
+    //   });
+    // }, err => {
+    //   this.toast.show(err);
+    // });
   //   this.camera.getPicture(options).then((imageData) => {
 
   //     let base64Image = null;
@@ -100,3 +98,5 @@ export class AddInventoryListPage {
   //     console.log(error);
   //   });
   // }
+
+}
