@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,115 +12,241 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
-
 // 컬러
 $invGreen: #169C78;
 $invGreenLigher: #34C29C;
 $bgGreen: #F0F7F5;
 $cardBorderGreen: #97BAB0;
 $starYellow: #FFC000;
-
 $white: #fff;
-
 // 그림자
 @mixin cardShadow {
-    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
 }
-  
-
 
 // 헤더(툴바)
 .toolbar-content .title.title-md {
-    position: relative;
-    top: 4px;
-    text-align: center;
+  position: relative;
+  top: 4px;
+  text-align: center;
 }
-
 
 // 컨텐츠뷰 - 배경
-ion-content.content-md, ion-content.content-ios{
-    background: $bgGreen;
+ion-content.content-md,
+ion-content.content-ios {
+  background: $bgGreen;
 }
-
 
 // 메인윈도 - 글로벌 - 카드
-ion-card.card-md, ion-card.card-ios {
-    padding: 0;
-    margin: 0;
-    width: 100%;
+ion-card.card-md,
+ion-card.card-ios {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $cardBorderGreen;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+  .ion-card-header,
+  .ion-card-content {
+    background: $white;
+  }
+  .ion-card-header {
+    h3 {
+      color: $invGreen;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      z-index: 1;
+      font-size: 1.5rem;
+    }
+  }
+  .ion-card-content {
+    .list-header-md {
+      border-top: 0;
+    }
+    .item-inner {
+      // 리뷰 부분 숨김
+      display: none;
+    }
+    ion-list+p {
+      // 가격 부분 숨김
+      display: none;
+    }
+  }
+  &:hover {
+    // 카드 : 마우스오버
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1), 0 0 4px $invGreen;
+  }
+}
+
+ // 풀버튼 
+ button.button-full-md,
+ button.button-full-ios {
+   width: 94%;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: $invGreen;
+   border-radius: 100px;
+   box-shadow: none;
+ }
+ button.button-full-md:hover,
+ button.button-full-ios:hover {
+   background-color: $invGreenLigher;
+ }
+ // 플로팅액션버튼
+ button.fab-md,
+ button.fab-ios {
+   background-color: $invGreen;
+   ion-icon.icon-ios {
+     // ios fab 버튼 + 크기 조정
+     font-size: 3.2rem;
+     font-weight: bold;
+   }
+   &:hover {
+     background-color: $invGreenLigher;
+   }
+ }
+
+@mixin contentView {
+ 
+  [data-name="wrapper"] {
+    @include cardShadow();
     border-radius: 6px;
-    border: 1px solid $cardBorderGreen;
-    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
-
-    .ion-card-header, .ion-card-content {
-        background: $white;
+  }
+  ion-row.row {
+    background: #fff;
+    border-color: $cardBorderGreen;
+    border-style: solid;
+    border-width: 0;
+    button.button-md,
+    button.button-ios {
+      // 편집 버튼
+      background: #fff;
+      color: $invGreen;
+      box-shadow: none;
+      border-radius: 50%;
+      border: 1px solid $invGreen;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 30px;
     }
-    
-    .ion-card-header {
-        h3 {
-            color: $invGreen;
-            font-weight: bold;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            z-index: 1;
-            font-size: 1.5rem;
-        }
-
+  }
+  ion-row.row:first-child {
+    // 일반 정보 섹션
+    border-width: 1px 1px 0 1px;
+    border-radius: 6px 6px 0 0;
+    padding: 20px 20px 0 20px;
+    >ion-col:first-child {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $invGreen;
     }
-
-    .ion-card-content {
-        .list-header-md {
-            border-top: 0;
-        }
-
-        .item-inner {
-            // 리뷰 부분 숨김
-            display: none;
-        }
-
-        ion-list+p {
-            // 가격 부분 숨김
-            display: none;
-        }
-    }
-}
-    ion-card.card-md:hover, ion-card.card-ios:hover {
-        // 카드 : 마우스오버
-        box-shadow: 0 2px 9px rgba(0,0,0,0.1), 0 0 4px $invGreen;
-    }
-
-
-
-// 풀버튼 
-button.button-full-md, button.button-full-ios {
-    width: 94%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $invGreen;
-    border-radius: 100px;
-    box-shadow: none;
-}
-
-button.button-full-md:hover, button.button-full-ios:hover {
-    background-color: $invGreenLigher;
-}
-
-
-// 플로팅액션버튼
-button.fab-md, button.fab-ios {
-    background-color: $invGreen;    
-    
-    ion-icon.icon-ios {
-        // ios fab 버튼 + 크기 조정
-        font-size: 3.2rem;
+    [data-name*="item-"] {
+      display: block;
+      margin-bottom: 20px;
+      &:before {
+        content: "";
+        color: $invGreen;
         font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+      }
+      &:last-child {
+        margin-bottom: 12px;
+      }
     }
+    [data-name="item-star"] {
+      &:before {
+        content: "★";
+        display: inline-block;
+        color: $starYellow;
+      }
+      position: absolute;
+      top: 9px;
+      font-weight: bold;
+      font-size: 2rem;
+      color: $starYellow;
+      right: 0;
+    }
+    [data-name="item-desc"] {
+      &:before {
+        content: "기록 사항";
+      }
+    }
+    [data-name="item-quantity"] {
+      &:before {
+        content: "수량";
+      }
+    }
+    [data-name="item-price"] {
+      &:before {
+        content: "가격";
+      }
+    }
+  }
+  ion-row.row:last-child {
+    //타임라인 섹션
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 6px 6px;
+    padding: 0 20px 20px 20px;
+    &:before {
+      content: "리뷰 타임라인";
+      color: $invGreen;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+      width: 100%;
+      padding: 5px;
+    }
+    ion-col {
+      flex: 0 0 40%;
+      [data-name="item-date"] {
+        float: left;
+        color: $white;
+        background-color: $invGreen;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+      [data-name="item-history"] {
+        float: left;
+        clear: both;
+        font-size: 1.3rem;
+        margin-top: 6px;
+      }
+      &:nth-child(odd):before {
+        content: "";
+        display: block;
+        top: 18px;
+        width: 50%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 1px;
+        /* background: #169c78; */
+        border: 1px dashed #169C78;
+        position: absolute;
+        left: 80%;
+        /* margin-left: 50%; */
+        /* -webkit-transform: translate(-150%, 0); */
+        /* transform: translate(-150%, 0); */
+      }
+      &:after {
+        content: "";
+        display: block;
+        top: 8px;
+        width: 21px;
+        box-sizing: border-box;
+        height: 21px;
+        border-radius: 50%;
+        background: $white;
+        border: 3px solid $invGreen;
+        position: absolute;
+        left: 150%;
+        /* margin-left: 50%; */
+        transform: translate(-150%, 0);
+      }
+    }
+  }
 }
-    button.fab-md:hover, button.fab-ios:hover {
-        // 플로팅액션버튼 : 마우스오버    
-        background-color: $invGreenLigher;
-    }
-    
