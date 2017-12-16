@@ -60,49 +60,6 @@ export class AddInventoryListPage {
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
   }
-<<<<<<< HEAD
-
-  // takePhoto() {
-  //   const options: CameraOptions = {
-  //     quality: 100,
-  //     targetHeight: 500,
-  //     targetWidth: 500,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     encodingType: this.camera.EncodingType.PNG,
-  //     mediaType: this.camera.MediaType.PICTURE
-  //   }
-    // this.camera.getPicture(options).then((imageData) => {
-    //   this.vision.getLabels(imageData).subscribe((result) => {
-    //     // this.inventory.addInventory(imageData);
-    //     this.toast.show(imageData);
-    //   }, err => {
-    //     this.toast.show(err);
-    //   });
-    // }, err => {
-    //   this.toast.show(err);
-    // });
-  //   this.camera.getPicture(options).then((imageData) => {
-
-  //     let base64Image = null;
-
-  //     //get photo from the camera based on platform type
-  //     if (this.platform.is('ios'))
-  //       base64Image = normalizeURL(imageData);
-  //     else
-  //       base64Image = "data:image/jpeg;base64," + imageData;
-
-  //     //add photo to the array of photos
-  //     // this.toast.show(base64Image);
-  //     this.addItem(imageData);
-
-  //   }, (error) => {
-  //     console.debug("Unable to obtain picture: " + error, "app");
-  //     console.log(error);
-  //   });
-  // }
-
-=======
->>>>>>> origin/master
 }
 
 // takePhoto() {
