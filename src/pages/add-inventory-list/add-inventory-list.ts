@@ -25,7 +25,13 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'add-inventory-list.html',
 })
 export class AddInventoryListPage {
-  historyitem: HistoryItem;
+  historyitem: HistoryItem = {
+    title: '',
+    desc: '',
+    star: 0,
+    date: '',
+    category: null
+  };
 
   item: Item = {
     name : '',
@@ -33,7 +39,7 @@ export class AddInventoryListPage {
     price: undefined,
     desc: '',
     history: [ this.historyitem ],
-    star: 0,
+    star: 3,
     date: ''
   }
 
@@ -54,10 +60,20 @@ export class AddInventoryListPage {
   }
 
   addItem (item:Item) {
+    this.historyitem.category = '첫 구매';
+    this.historyitem.date = item.date;
+    this.historyitem.desc = item.desc;
+    this.historyitem.star = item.star;
+    this.historyitem.title = '';
+
     this.inventory.addInventory(item).then(ref => {
       this.toast.show(`${item.name} saved`);
       this.navCtrl.setRoot('HomePage', { key: ref.key } );
     })
+  }
+
+  cancel () {
+    this.navCtrl.setRoot('HomePage');
   }
 
   // takePhoto() {
