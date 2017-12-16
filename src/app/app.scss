@@ -18,23 +18,104 @@
 
 // 컬러
 $invGreen: #169C78;
+$invGreenLigher: #34C29C;
+$bgGreen: #F0F7F5;
+$cardBorderGreen: #97BAB0;
+
+$white: #fff;
+
+
+// 헤더(툴바)
+.toolbar-content .title.title-md {
+    position: relative;
+    top: 4px;
+    text-align: center;
+}
+
+
+// 컨텐츠뷰 - 배경
+ion-content.content-md, ion-content.content-ios{
+    background: $bgGreen;
+}
+
 
 // 메인윈도 - 글로벌 - 카드
 ion-card.card-md, ion-card.card-ios {
     padding: 0;
     margin: 0;
     width: 100%;
+    border-radius: 6px;
+    border: 1px solid $cardBorderGreen;
+    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+
+    .ion-card-header, .ion-card-content {
+        background: $white;
+    }
+    
+    .ion-card-header {
+        h3 {
+            color: $invGreen;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            z-index: 1;
+            font-size: 1.5rem;
+        }
+
+    }
+
+    .ion-card-content {
+        .list-header-md {
+            border-top: 0;
+        }
+
+        .item-inner {
+            // 리뷰 부분 숨김
+            display: none;
+        }
+
+        ion-list+p {
+            // 가격 부분 숨김
+            display: none;
+        }
+    }
 }
+    ion-card.card-md:hover, ion-card.card-ios:hover {
+        // 카드 : 마우스오버
+        box-shadow: 0 2px 9px rgba(0,0,0,0.1), 0 0 4px $invGreen;
+    }
+
+
 
 // 풀버튼 
 button.button-full-md, button.button-full-ios {
-    width: 95%;
+    width: 94%;
     margin-left: auto;
     margin-right: auto;
     background-color: $invGreen;
+    border-radius: 100px;
+    box-shadow: none;
 }
+
+button.button-full-md:hover, button.button-full-ios:hover {
+    background-color: $invGreenLigher;
+}
+
 
 // 플로팅액션버튼
 button.fab-md, button.fab-ios {
     background-color: $invGreen;    
+    
+    ion-icon.icon-ios {
+        // ios fab 버튼 + 크기 조정
+        font-size: 3.2rem;
+        font-weight: bold;
+    }
 }
+    button.fab-md:hover, button.fab-ios:hover {
+        // 플로팅액션버튼 : 마우스오버    
+        background-color: $invGreenLigher;
+    }
+    
