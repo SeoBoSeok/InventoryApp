@@ -1,9 +1,6 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-       <button ion-button>
-        <ion-icon name="menu"></ion-icon>
-      </button> 
     </ion-buttons>
 
     <ion-title>
@@ -52,7 +49,7 @@
             <p>
               <button ion-button icon-left small end>
                 <ion-icon name="time"></ion-icon>
-                <div>2 주전</div>
+                <div>D + {{item.date | dateDiff}}</div>
               </button>
             </p>
           </ion-card-content>

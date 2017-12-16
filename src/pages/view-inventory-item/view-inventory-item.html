@@ -23,42 +23,53 @@
 <ion-content padding>
   <ion-row>
     <ion-col col-12 align-self-center>
-       {{item.name}} {{item.quantity}} {{item.price}}
+      <span data-name="main-item-name">{{item.name}}</span>
+      <!-- data diff pipe -->
+      <span data-name="main-item-date">{{item.date}}</span>
     </ion-col>
     <ion-col col-12 align-self-center>
       <button navPush="EditInventoryItemPage" ion-button detail-push [navParams]="{item: item}">
         <ion-icon name="brush"></ion-icon>
       </button>
-      {{item.desc}} {{item.star}}
+      <span data-name="main-item-star">{{item.star}}</span>
     </ion-col>
   </ion-row>
+  <!-- 제품 리뷰 시작 -->
   <ion-row>
+    <ion-col col-12>
+      <ion-label>리뷰 타임라인</ion-label>
+    </ion-col>
     <ion-col col-12 *ngFor="let timeline of item.history.slice().reverse()">
-     {{timeline.date}} {{timeline.category}} {{timeline.title}} {{timeline.desc}} {{timeline.star}}
+      <span data-name="timeline-date">{{timeline.date}}</span>
+      <span data-name="timeline-title">{{timeline.title}}</span>
+      <span data-name="timeline-category">{{timeline.category}}</span>
+      <span data-name="timeline-desc">{{timeline.desc}}</span>
+      <span data-name="timeline-star">{{timeline.star}}</span>
     </ion-col>
   </ion-row>
+  <!-- 제품 리뷰 끝 -->
   <ion-row>
     <ion-col col-12>
       <ion-label>물건 이름</ion-label>
-      {{item.name}}
+      <span data-name="item-name">{{item.name}}</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12>
       <ion-label>구매 일시</ion-label>
-      {{item.date}}
+      <span data-name="item-date">{{item.date}}</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12>
       <ion-label>구매 가격 (￦)</ion-label>
-       {{item.price}}
+      <span data-name="item-price">{{item.price}}</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12>
       <ion-label>기록 사항</ion-label>
-      {{item.desc}}
+      <span data-name="item-desc">{{item.desc}}</span>
     </ion-col>
   </ion-row>
 </ion-content>
